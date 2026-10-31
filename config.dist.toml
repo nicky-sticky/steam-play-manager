@@ -1,0 +1,9 @@
+# --- Game Idler ---
+# Max concurrent worker processes for client-mode idling
+max_client_idle_workers = 4
+
+# --- Verification & Auditing (Tolerances in seconds) ---
+# Playtime verification tolerance
+idle_tolerance_seconds = 10
+# Achievement delay verification tolerance
+unlock_delay_tolerance_seconds = 2

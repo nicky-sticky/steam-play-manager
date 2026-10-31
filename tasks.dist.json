@@ -1,0 +1,18 @@
+{
+  "tasks": [
+    {
+      "id": "task_1",
+      "command": "lib_sync",
+      "args": [],
+      "kwargs": {},
+      "status": "PENDING"
+    },
+    {
+      "id": "task_2",
+      "command": "manifest_ach_check",
+      "args": [],
+      "kwargs": {},
+      "status": "PENDING"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+[project]
+name = "Steam Play Manager"
+package = "steam_play_manager"
+venv = "env"
+default = "cli"
+elevate = false
+
+[commands]
+cli = { cmd = ["python", "-m", "steam_play_manager.cli"], description = "Command-line interface" }
+tui = { cmd = ["python", "-m", "steam_play_manager.tui"], description = "Launch the interactive TUI" }
+status = { cmd = ["python", "-m", "steam_play_manager.cli", "login"], description = "Show login status" }
+sync = { cmd = ["python", "-m", "steam_play_manager.cli", "sync"], description = "Sync playtime and achievements" }
+idle-all = { cmd = ["python", "-m", "steam_play_manager.cli", "manifest", "--all", "idler", "idle"], description = "Idle every manifest game" }
+unlock-all = { cmd = ["python", "-m", "steam_play_manager.cli", "manifest", "--all", "unlocker", "unlock"], description = "Unlock every manifest game" }
+tasks-run = { cmd = ["python", "-m", "steam_play_manager.cli", "tasks", "run"], description = "Run the task queue" }
+tasks-reset = { cmd = ["python", "-m", "steam_play_manager.cli", "tasks", "reset"], description = "Reset the task queue" }
+docker-up = { cmd = ["docker", "compose", "up", "-d"], description = "Start the stack" }
+docker-down = { cmd = ["docker", "compose", "down"], description = "Stop the stack" }
+docker-build = { cmd = ["docker", "compose", "build"], description = "Build the images" }
+docker-logs = { cmd = ["docker", "compose", "logs", "-f"], description = "Follow container logs" }
+docker-sync = { cmd = ["docker", "compose", "run", "--rm", "--entrypoint", "python3", "app", "-m", "steam_play_manager.cli", "sync"], description = "Sync via the container" }
+docker-tui = { cmd = ["docker", "compose", "run", "--rm", "-it", "--entrypoint", "python3", "app", "-m", "steam_play_manager.tui"], description = "Launch the TUI in Docker" }
+docker-tasks-run = { cmd = ["docker", "compose", "run", "--rm", "--entrypoint", "python3", "app", "-m", "steam_play_manager.cli", "tasks", "run"], description = "Run the task queue in foreground" }
+docker-tasks-queue = { cmd = ["docker", "compose", "run", "-d", "--name", "spm-task-runner", "--entrypoint", "python3", "app", "-m", "steam_play_manager.cli", "tasks", "run"], description = "Run the task queue detached in background" }
+docker-tasks-reset = { cmd = ["docker", "compose", "run", "--rm", "--entrypoint", "python3", "app", "-m", "steam_play_manager.cli", "tasks", "reset"], description = "Reset the task queue in the container" }

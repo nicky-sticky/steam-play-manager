@@ -1,0 +1,28 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.app
+    image: spm-app:latest
+    container_name: spm-app
+    restart: unless-stopped
+    environment:
+      - APP_ENV=dev
+      - LOG_LEVEL=INFO
+      - TZ=America/Chicago
+      - LOGIN_MODE=agent
+      - TASK_AUTO_RUN=${TASK_AUTO_RUN:-true}
+      - STEAM_ID=${STEAM_ID}
+      - STEAM_API_KEY=${STEAM_API_KEY}
+      - STEAM_USERNAME=${STEAM_USERNAME}
+      - STEAM_PASSWORD=${STEAM_PASSWORD}
+      - STEAM_UTILITY_PATH=/app/libs/linux-x64/SteamUtility
+    volumes:
+      - "./src:/app/src"
+      - "./libs:/app/libs"
+      - "./data:/app/data"
+      - "./logs:/app/logs"
+      - "./manifests:/app/manifests"
+      - "./config.toml:/app/config.toml"
+      - "./tasks.json:/app/tasks.json"
+      - "./tokens.json:/app/tokens.json"
